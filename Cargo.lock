@@ -75,6 +75,7 @@ name = "cgp-tutorial"
 version = "0.1.0"
 dependencies = [
  "cgp-core",
+ "itertools",
 ]
 
 [[package]]
