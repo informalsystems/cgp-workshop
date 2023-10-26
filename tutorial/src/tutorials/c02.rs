@@ -1,16 +1,17 @@
-pub mod s1;
-pub mod s2;
-pub mod s3;
-pub mod s4;
-pub mod s5;
-pub mod s6;
-
 use core::fmt::Display;
 
 use itertools::Itertools;
 
 pub trait CanPrintItems {
     fn print_items(self);
+}
+
+pub trait HasSeparator {
+    const SEPARATOR: &'static str;
+}
+
+impl HasSeparator for u64 {
+    const SEPARATOR: &'static str = ",";
 }
 
 #[test]
@@ -25,10 +26,10 @@ pub trait CanFormatItems {
 impl<I> CanFormatItems for I
 where
     I: Itertools + Clone,
-    I::Item: Display + Eq + Ord,
+    I::Item: Display + Eq + Ord + HasSeparator,
 {
     fn format_items(&mut self) -> String {
-        self.join(", ")
+        self.join(I::Item::SEPARATOR)
     }
 }
 
