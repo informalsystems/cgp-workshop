@@ -1,4 +1,3 @@
-use cgp_core::prelude::*;
 use core::fmt::{Debug, Display};
 
 use itertools::Itertools;
@@ -151,7 +150,7 @@ impl<T> CanPrintItems for T
 where
     T: CanFormatItems,
 {
-    fn print_items(mut self) {
+    fn print_items(self) {
         println!("{}", self.format_items());
     }
 }

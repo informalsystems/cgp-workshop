@@ -123,7 +123,7 @@ impl<T> CanPrintItems for T
 where
     T: CanFormatItems,
 {
-    fn print_items(mut self) {
+    fn print_items(self) {
         println!("{}", self.format_items());
     }
 }
